@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hardware-Software</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="content">
+            <header>
+                <nav class="navbar">
+                    <div class="logo">
+                        <a class="title" href="./index.html">Hardware-Software</a>
+                        <i class="fa fa-hand-point-left"></i>
+                    </div>
+                    <div class="nav-list"> 
+                        <a class="" onclick="loadPage('hardware.html'); activate(this)">Hardware</a>
+                        <a class="" onclick="loadPage('software.html'); activate(this)">Software</a>
+                        <a class="" onclick="loadPage('contact.html'); activate(this)">Contact</a>
+                    </div>
+                </nav>
+            </header>
+            <main id="main">
+                <div class="index-image">
+                    <img class="back-img" src="hoverImage.jpeg">
+                    <img class="front-img" src="mainImage.jpg">
+                </div>
+            </main>
+        </div>
+        <footer >
+            Copyright &#169; 2024 Andradopoulos Stavros | All Rights Reserved | Powered by GOD
+        </footer>
+    </div>
+    <script>
+
+        function activate(x){
+            const links = document.getElementsByTagName("a");
+            for (const key of links) {
+                key.classList.remove("active")
+            }
+            x.classList.add("active")
+        }
+
+
+        function loadPage(url) {
+            fetch(url)
+                .then(response => response.text())
+                .then(page => {
+                    document.getElementById('main').innerHTML = page;
+                })
+                .catch(error => console.log('Error loading page:', error));
+        }
+
+        function alertUser(){
+            const name = document.getElementById('firstname').value.trim();
+            const surname = document.getElementById('lastname').value.trim();
+            if (!name || !surname){
+                alert("Both fields must be filled!");
+            } else {
+                alert(`Name: ${name} Surname: ${surname} `);
+            }
+        }
+
+        </script>
+</body>
+</html>
